@@ -1,0 +1,44 @@
+<section class="kd-login-form">
+    <h3 class="kd-hd">Please Log In</h3>
+    <form 
+      fxLayout="column" 
+      fxLayoutAlign="center center" 
+      fxLayoutGap="10px" 
+      #f="ngForm" 
+      (ngSubmit)="onSubmit(f)"
+      [formGroup]="loginForm"
+    >
+      <mat-form-field class="kd-form-field">
+        <input 
+          type="email" 
+          matInput 
+          placeholder="Your email" 
+          formControlName="email"
+        >
+      <mat-error>We can't find any match to this email address</mat-error>
+      <!-- <mat-error *ngIf="errors.email">{{ errors.email? errors.email : '' }}</mat-error> -->
+      </mat-form-field>
+      <mat-form-field class="kd-form-field">
+        <input 
+          type="password" 
+          matInput 
+          placeholder="Your password" 
+          formControlName="password"
+        >
+      <mat-error>Please enter an invalid password</mat-error>
+      </mat-form-field>
+      <div class="kd-form-field">
+          <a class="kd-hint-link" [routerLink]="[ '/forgetpassword' ]">Forget password?</a>
+      </div>
+      <button 
+        type="submit" 
+        class="kd-btn 
+        submit" 
+        mat-raised-button 
+        color="primary"
+        [disabled]="f.invalid"
+      >
+        Sign In
+      </button>
+    </form>
+  </section>

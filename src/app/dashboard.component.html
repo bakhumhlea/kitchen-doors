@@ -1,0 +1,10 @@
+<h1>Kitchen Door</h1>
+
+<form (ngSubmit)="onAddProduct(f)" #f="ngForm">
+    <input type="text" ngModel name="name" required>
+    <input type="number" ngModel name="value" required>
+    <button type=submit [disabled]="isDisable">
+      Hit Me
+    </button>
+</form>
+<app-product (productClicked)="onRemoveProduct(product)" *ngFor="let product of products" [product]="product"></app-product>

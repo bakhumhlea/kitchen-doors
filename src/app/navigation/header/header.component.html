@@ -1,0 +1,21 @@
+<nav>
+  <mat-toolbar [ngClass]="{'kd-nav': true}">
+    <span class="el-left">
+      <button mat-button (click)="onToggleSidenav()"><mat-icon class="menu-ic">menu</mat-icon></button>
+      <a class="kd-logo-wrap">
+        <mat-icon class="kd-logo">donut_small</mat-icon>
+        <span class="kd-appname">KITCHEN DOORS</span>
+      </a>
+    </span>
+    <span class="el-right" fxHide.lt-sm>
+      <a routerLink="/login" class="kd-btn auth" mat-button>Login</a>
+      <a routerLink="/signup" class="kd-btn auth" mat-button>Sign Up</a>
+    </span>
+  </mat-toolbar>
+  <mat-toolbar [ngClass]="{'kd-toolbar': true}" fxHide.lt-sm>
+    <a class="kd-btn" mat-button routerLink="/console">Checks</a>
+    <a class="kd-btn" mat-button routerLink="/dashboard">Shift Report</a>
+    <a class="kd-btn" mat-button routerLink="/dashboard">Dashboard</a>
+    <a class="kd-btn" mat-button routerLink="/dashboard">Inventories</a>
+  </mat-toolbar>
+</nav>
