@@ -1,0 +1,17 @@
+<div class="kd-all-checks" 
+fxLayout="row" 
+  fxLayout.lt-sm="column" 
+  fxLayoutAlign="start start"
+  fxLayoutAlign.lt-sm="start stretch" 
+  fxLayoutGap="20px"
+  fxLayoutGap.lt-sm="10px"
+>
+  <h5 class="section-title" fxHide.gt-sm>
+    <mat-icon class="ic title mobile">receipt</mat-icon>
+    <span>Checks</span>
+  </h5>
+  <a mat-button [routerLink]="[ '/console/checks/viewcheck', 'new-check' ]" class="check-mod btn">
+    <mat-icon class="ic add">add</mat-icon>
+  </a>
+  <app-check *ngFor="let check of checks" [check]="check"></app-check>
+</div>

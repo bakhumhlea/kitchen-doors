@@ -1,0 +1,25 @@
+<button  class="check-mod" fxLayout="column" fxLayoutAlign="center" (click)="onClick(check.id)">
+  <div class="checks-content">
+    <div class="text-info top">
+      <span class="flx al-c">
+        <mat-icon class="ic info on-r">person</mat-icon>
+        <span>{{check.guest}}</span>
+      </span>
+      <span class="flx al-c">
+        <mat-icon class="ic info">access_time</mat-icon>
+        <span>{{createWhen}}</span>
+      </span>
+    </div>
+    <div class="text-mid">{{check.title}}</div>
+    <div class="text-info btm">
+      <span class="flx al-c">
+          <span>{{check.host}}</span>
+      </span>
+      <span class="flx al-c">
+        <mat-icon class="ic info check" *ngIf="!isCheckClose()">check_circle</mat-icon>
+        <mat-icon class="ic info check" *ngIf="isCheckClose()">receipt</mat-icon>
+        <span>{{isCheckClose()?'Adjust Tips':'Saved'}}</span>
+      </span>
+    </div>
+  </div>
+</button>

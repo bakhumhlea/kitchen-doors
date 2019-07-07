@@ -1,6 +1,4 @@
 .kd-nav {
-  /* position: absolute; */
-  max-width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,10 +7,19 @@
   width: 100vw;
   height: 50px;
   border-bottom: 1px solid #3e3e3e;
+  z-index: 20;
 }
 .kd-nav .el-left {
   display: flex;
   align-items: center;
+}
+.kd-nav .el-left .kd-btn.menu {
+  height: 34px;
+  padding: 4px 9px;
+  margin-right: 0px;
+}
+.kd-nav .el-right .kd-btn.auth {
+  color: white;
 }
 .kd-logo-wrap {
   display: flex;
@@ -33,20 +40,96 @@
   letter-spacing: 1px;
   font-weight: 300;
   font-size: 0.6em;
-  padding-left: 22px;
-  padding-right: 22px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
 }
-
+.kd-btn.add-shortcut {
+  padding: 4px;
+  border-radius: 100px;
+  width: 32px;
+  height: 32px;
+}
+.kd-btn.add-shortcut:hover {
+  background-color:  #3a3a3a;
+}
 .kd-toolbar {
   max-width: 100vw;
   font-weight: 300;
   font-family: 'Poppins', 'Montserrat', sans-serif;
-  height: 40px;
+  /* height: 40px; */
   /* padding: 0 20px; */
+  background: #212121;
   border-bottom: 1px solid #3e3e3e;
+  z-index: 20;
 }
 .kd-toolbar .kd-btn {
   color: #87e0c1;
   font-weight: 300;
-  font-size: 0.6em;
+  font-size: 0.8em;
+  text-decoration: none;
+  margin-right: 10px;
+}
+.kd-tab {
+  color: #ffffff;
+  height: 35px;
+  min-width: 100px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  /* padding: 5px; */
+  letter-spacing: 1px;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-size: 0.75em;
+  font-weight: 300;
+  opacity: 0.8;
+}
+.kd-tab.active {
+  background-color: #3e3e3e;
+  opacity: 1;
+}
+.ic.tab-mobile {
+  transform: translateX(-2px) scale(0.9);
+  margin-right: 2px;
+}
+.ic.menu {
+  cursor: pointer;
+  margin-right: 4px;
+  stroke-width: 2px;
+  transition: 1s 0s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.ic.menu path {
+  transition: 0.5s 0s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+@media only screen and (max-width: 400px) {
+  .kd-logo {
+    color: #00ffa6;
+    transform: rotate(-45deg) translate(0, -1px);
+    font-size: 0.95em;
+  }
+  .kd-appname {
+    font-family: 'DM sans', 'Montserrat', sans-serif;
+    margin-left: 0px;
+    font-weight: 700;
+    font-size: 0.75em;
+  }
+  .kd-tab {
+    min-width: calc(100vw / 4);
+  }
+  .ic.tab-mobile {
+    transform: translateX(0px) scale(0.9);
+    margin-right: 0px;
+  }
+  .kd-nav .el-left {
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .kd-nav .el-left button {
+    transform: translateX(-15px);
+  }
+  .ic.menu {
+    cursor: pointer;
+    font-size: 1.6em;
+  }
 }

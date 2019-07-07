@@ -1,7 +1,7 @@
 <section class="kd-sidenav">
   <div class="kd-sidenav-content">
-    <div class="kd-nav-header" fxLayout="row" fxLayoutAlign="space-between center">
-      <button class="kd-btn logout" mat-button>
+    <div class="kd-nav-header" fxLayout="row" fxLayoutAlign="space-between center" *ngIf="isAuth">
+      <button class="kd-btn logout" mat-button (click)="onLogout()">
         <mat-icon class="ic logout">exit_to_app</mat-icon>
         <span>Log Out</span>
       </button>
@@ -10,20 +10,21 @@
         <span>Username</span>
       </div>
     </div>
+    <div *ngIf="isAuth">
     <label class="kd-label">Console</label>
-    <div class="kd-sub-container">
-      <a mat-list-item class="kd-item link" mat-button [routerLink]="[ '/dashboard' ]" (click)="onCloseSideNav()">
-        <mat-icon class="ic item">receipt</mat-icon>
-        <span>Checks</span>
-      </a>
-      <a mat-list-item class="kd-item link" mat-button (click)="onCloseSideNav()">
-        <mat-icon class="ic item">credit_card</mat-icon>
-        <span>Transaction</span>
-      </a>
-    </div>
-    <label class="kd-label">Manager</label>
-    <div class="kd-sub-container">
+      <div class="kd-sub-container">
+        <a mat-list-item class="kd-item link" mat-button [routerLink]="[ '/console/checks' ]" (click)="onCloseSideNav()">
+          <mat-icon class="ic item">receipt</mat-icon>
+          <span>Checks</span>
+        </a>
         <a mat-list-item class="kd-item link" mat-button (click)="onCloseSideNav()">
+          <mat-icon class="ic item">credit_card</mat-icon>
+          <span>Transaction</span>
+        </a>
+      </div>
+      <label class="kd-label">Manager</label>
+      <div class="kd-sub-container">
+        <a mat-list-item class="kd-item link" mat-button [routerLink]="[ '/dashboard' ]" (click)="onCloseSideNav()">
           <mat-icon class="ic item">dashboard</mat-icon>
           <span>Dashboard</span>
         </a>
@@ -44,16 +45,17 @@
           <span>Teams</span>
         </a>
       </div>
-    <label class="kd-label">Storage</label>
-    <div class="kd-sub-container">
-      <a mat-list-item class="kd-item link" mat-button (click)="onCloseSideNav()">
-        <mat-icon class="ic item">kitchen</mat-icon>
-        <span>Inventories</span>
-      </a>
-      <a mat-list-item class="kd-item link" mat-button (click)="onCloseSideNav()">
-        <mat-icon class="ic item">note_add</mat-icon>
-        <span>Ordering</span>
-      </a>
+      <label class="kd-label">Storage</label>
+      <div class="kd-sub-container">
+        <a mat-list-item class="kd-item link" mat-button (click)="onCloseSideNav()">
+          <mat-icon class="ic item">kitchen</mat-icon>
+          <span>Inventories</span>
+        </a>
+        <a mat-list-item class="kd-item link" mat-button (click)="onCloseSideNav()">
+          <mat-icon class="ic item">note_add</mat-icon>
+          <span>Ordering</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>

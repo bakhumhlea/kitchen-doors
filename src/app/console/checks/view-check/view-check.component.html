@@ -1,0 +1,103 @@
+<section class="kd-new-check" fxLayout="column" fxLayoutAlign="strecth space-between">
+  <div class="top-row-content" fxLayout="row" fxLayoutAlign="start start">
+    <div class="left">
+      <app-items-table [check]="check"></app-items-table>
+    </div>
+    <div class="right">
+      <div class="kd-check-console">
+        <div class="hd-bar">
+          <span class="left" (click)="onCustomerLookup()"><mat-icon class="ic">person</mat-icon><span class="label">{{selectedCustomer?selectedCustomer:'Customer'}}</span></span>
+          <mat-icon class="ic">add</mat-icon>
+        </div>
+        <div class="summary">
+          <div class="row-item">
+            <span>Subtotal</span>
+            <span class="number">{{ getSubtotal() | currency }}</span>
+          </div>
+          <div class="row-item">
+            <span>Discount</span>
+            <span class="number">
+              <span class="percent">({{ getDiscount().percent }}) </span>
+              <span>{{ getDiscount().cash | currency }}</span>
+            </span>
+          </div>
+          <div class="row-item">
+            <span>Tax</span>
+            <span class="number">
+              <span class="percent">({{ getTax().taxRate }}) </span>
+              <span>{{ getTax().cash | currency }}</span>
+            </span>
+          </div>
+          <div class="row-item total">
+            <span>Total</span>
+            <span class="number">{{ getTotal() | currency }}</span>
+          </div>
+        </div>
+        <div class="btn-rack">
+          <div class="expend-panel" id="btn-rack-panel">
+            <div class="row">
+              <button class="kd-btn cash-out" mat-button>Cash</button>
+              <button class="kd-btn more" mat-button (click)="onToggleBtnPanel()"><mat-icon>more_horiz</mat-icon></button>
+              <button class="kd-btn cash-out" mat-button>Credit</button>
+            </div>
+            <div class="row">
+              <button class="kd-btn extra left" mat-button>Print Check</button>
+              <button class="kd-btn extra left" mat-button>Split Tender</button>
+            </div>
+            <div class="row">
+              <button class="kd-btn extra left" mat-button>Reprint Ticket</button>
+              <button class="kd-btn extra" mat-button>Mobile Payment</button>
+            </div>
+          </div>
+          <div class="row">
+            <button mat-button class="kd-btn save" (click)="saveCheck()">Save Ticket</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="kd-items-group" [ngClass]="isItemsContainerActive?'btm-row-content':'btm-row-content close'" fxLayout="column" fxLayoutAlign="start start">
+    <div class="kd-item-group" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="15px">
+      <div class="item-card" (click)="onAddItem({item: 'Caramelized Pork Belly', price: 14})">
+        Caramelized Pork Belly
+      </div>
+      <div class="item-card">
+        Caramelized Pork Belly
+      </div>
+      <div class="item-card">
+        Caramelized Pork Belly
+      </div>
+      <div class="item-card">
+        Caramelized Pork Belly
+      </div>
+      <div class="item-card">
+        Caramelized Pork Belly
+      </div>
+      <div class="item-card">
+        Caramelized Pork Belly
+      </div>
+    </div>
+    <mat-toolbar class="kd-tab-group below" fxLayout="row" fxLayoutAlign="start center">
+      <button 
+        mat-button
+        class="kd-btn tab ctrl"
+        (click)="onToggleItemContainer()"
+      >
+        <mat-icon *ngIf="isItemsContainerActive">clear</mat-icon>
+        <mat-icon *ngIf="!isItemsContainerActive">expand_less</mat-icon>
+      </button>
+      <button 
+        mat-button
+        class="kd-btn tab ctrl"
+      >
+        <mat-icon>apps</mat-icon>
+      </button>
+      <button 
+        mat-button
+        *ngFor="let itemTab of itemTabs"
+        [ngClass]="activeTab===itemTab.query?'kd-btn tab active':'kd-btn tab'"
+        (click)="onClickTabButton(itemTab)"
+      >{{itemTab.label}}</button>
+    </mat-toolbar>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+.kd-all-checks {
+  width: 100%;
+  padding: 24px 24px;
+}
+mat-tab-group {
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+}
+.check-mod {
+  cursor: pointer;
+  color: white;
+  position: relative;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  width: 200px;
+  height: 200px;
+  border-radius: 4px;
+  font-weight: 300;
+  background-color: #00ffa627;
+  border: none;
+  outline: none;
+  transition: 0.3s 0s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.check-mod.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00ffa60e;
+}
+.ic.add {
+  transform: scale(2);
+}
+@media only screen and (max-width: 600px) {
+  .kd-all-checks {
+    width: 100%;
+    padding: 10px 24px;
+  }
+  .section-title {
+    display: flex;
+    align-items: center;
+    font-size: 1.4em;
+    font-weight: 600;
+  }
+  .ic.title.mobile {
+    margin-right: 3px;
+  }
+  .check-mod.btn {
+    width: 100%;
+    height: 80px;
+  }
+  .ic.add {
+    transform: scale(1.4);
+  }
+}

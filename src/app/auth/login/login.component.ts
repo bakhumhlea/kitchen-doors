@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthServices } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +10,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errors= {};
-  correctCredential = {
-    email: '23chaysawat@gmail.com',
-    password: 'chaysawat023'
-  };
-  constructor() { }
+
+  constructor(private authService: AuthServices) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -22,18 +20,11 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  onSubmit(form) {
-    if (form.value.email !== this.correctCredential.email) {
-      console.log(form.value);
-      this.errors = { email: `We can't find any match to this email address`};
-      console.log(this.errors)
-    } else if (form.value.email !== this.correctCredential.password) {
-      console.log(form.value);
-      this.errors = { password: 'Password is incorrect'};
-      console.log(this.errors)
-    } else {
-      console.log(form.value);
-    }
+  onSubmit() {
+    this.authService.login({
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password
+    });
   }
 
 }

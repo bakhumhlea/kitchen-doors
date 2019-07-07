@@ -1,0 +1,32 @@
+<table mat-table *ngIf="check" [dataSource]="check.items" class="mat-elevation-z8" [ngClass]="{'kd-table': true}">
+    <!-- Item Column -->
+<ng-container matColumnDef="item">
+  <th class="kd-item-center" mat-header-cell *matHeaderCellDef> Items </th>
+  <td class="kd-item-center" mat-cell *matCellDef="let item"> {{item.item}} </td>
+  <!-- <td class="kd-item-center" mat-footer-cell *matFooterCellDef> Total </td> -->
+</ng-container>
+<ng-container matColumnDef="qty">
+  <th class="kd-item-center" mat-header-cell *matHeaderCellDef> Quantity </th>
+  <td class="kd-item-center" mat-cell *matCellDef="let item"> {{item.qty}} </td>
+</ng-container>
+<ng-container matColumnDef="price">
+  <th class="kd-item-center" mat-header-cell *matHeaderCellDef> Unit Price </th>
+  <td class="kd-item-center" mat-cell *matCellDef="let item"> {{item.price | currency}} </td>
+</ng-container>
+<ng-container matColumnDef="subtotal">
+  <th class="kd-item-center" mat-header-cell *matHeaderCellDef> Subtotal </th>
+  <td class="kd-item-center" mat-cell *matCellDef="let item"> {{getSubtotal(item) | currency}} </td>
+</ng-container>
+<ng-container matColumnDef="discount">
+  <th class="kd-item-center" mat-header-cell *matHeaderCellDef> Discount</th>
+  <td class="kd-item-center" mat-cell *matCellDef="let item"> {{item.discount && (item.discount*100)+'%'}} </td>
+</ng-container>
+<ng-container matColumnDef="total">
+  <th class="kd-item-center" mat-header-cell *matHeaderCellDef> Total </th>
+  <td class="kd-item-center" mat-cell *matCellDef="let item"> {{getTotal(item) | currency}} </td>
+</ng-container>
+<tr class="kd-item-center" mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+<tr class="kd-item-center" mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onClickItem(item)"></tr>
+<!-- <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr> -->
+</table>
+<!-- <div *ngFor="let item of allitems">{{item.item}}</div> -->

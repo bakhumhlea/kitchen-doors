@@ -13,9 +13,18 @@ import { HomeComponent } from './home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
-import { ConsoleComponent } from './foh/console/console.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { HeaderComponent } from './navigation/header/header.component';
+import { ChecksComponent } from './console/checks/checks.component';
+import { CheckComponent } from './console/checks/check/check.component';
+import { ViewCheckComponent } from './console/checks/view-check/view-check.component';
+import { ViewCheckService } from './console/checks/view-check/view-check.service';
+import { ItemsTableComponent } from './console/checks/view-check/items-table/items-table.component';
+import { CustomerLookupComponent } from './console/checks/view-check/common/customer-lookup.component';
+import { AuthServices } from './auth/auth.service';
+import { CheckService } from './console/checks/check/check.service';
+import { SaveChangesModalComponent } from './common/save-changes-modal.component';
+import { AnimationService } from './navigation/header/animation.service';
 
 
 @NgModule({
@@ -26,9 +35,14 @@ import { HeaderComponent } from './navigation/header/header.component';
     HomeComponent,
     SignupComponent,
     LoginComponent,
-    ConsoleComponent,
     SidenavComponent,
     HeaderComponent,
+    ChecksComponent,
+    CheckComponent,
+    ViewCheckComponent,
+    ItemsTableComponent,
+    CustomerLookupComponent,
+    SaveChangesModalComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +52,14 @@ import { HeaderComponent } from './navigation/header/header.component';
     MaterialModule,
     ReactiveFormsModule
   ],
-  providers: [DashboardService],
-  bootstrap: [AppComponent]
+  providers: [
+    DashboardService,
+    ViewCheckService,
+    AuthServices,
+    CheckService,
+    AnimationService
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [CustomerLookupComponent, SaveChangesModalComponent]
 })
 export class AppModule { }

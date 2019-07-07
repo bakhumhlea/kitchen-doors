@@ -1,0 +1,50 @@
+.kd-table {
+  font-family: 'poppins';
+  /* font-weight: 200; */
+  width: 100%;
+  background-color: #ddfff3;
+}
+.kd-item-center {
+  padding-left: 10px;
+  text-align: center;
+  width: 80px;
+  /* letter-spacing: 1px; */
+  /* font-weight: 300; */
+}
+.kd-item-center:first-of-type {
+  text-align: left;
+  width: 250px;
+  letter-spacing: 0px;
+}
+tr.mat-header-row {
+  height: 30px;
+  font-weight: 400;
+  background-color: white;
+}
+tr.mat-footer-row,
+tr.mat-row {
+  height: 30px;
+  font-size: 0.7em;
+}
+tr.mat-row:hover {
+  cursor: pointer;
+  /* transform: translate(50px, 0px); */
+  transition: 0.2s 0s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+tr.mat-row:hover .kd-item-center {
+  background-color: #b6ffe5;
+}
+th.mat-header-cell {
+  color: black;
+  border-bottom-color: #00000018;
+  font-weight: 600;
+}
+td.mat-cell {
+  color: black;
+  background-color: #ddfff3;
+  /* color: white;
+  background-color: #3c3c3c; */
+  font-size: 1.1em;
+  font-weight: 300;
+  border-bottom-color: #00000018;
+}

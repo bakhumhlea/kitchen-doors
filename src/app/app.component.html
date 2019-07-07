@@ -1,5 +1,5 @@
 <mat-sidenav-container class="nav-container">
-    <mat-sidenav #sidenav mode="side" role="navigation" opened="true">
+    <mat-sidenav #sidenav mode="side" role="navigation" [opened]="false">
       <app-sidenav (sidenavToggle)="sidenav.close()"></app-sidenav>
     </mat-sidenav>
     <mat-sidenav-content>

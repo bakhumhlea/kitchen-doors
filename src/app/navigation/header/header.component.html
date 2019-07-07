@@ -1,21 +1,49 @@
 <nav>
   <mat-toolbar [ngClass]="{'kd-nav': true}">
     <span class="el-left">
-      <button mat-button (click)="onToggleSidenav()"><mat-icon class="menu-ic">menu</mat-icon></button>
+      <span class="kd-btn menu" (click)="onToggleSidenav()" *ngIf="isAuth">
+        <svg class="ic menu" width="24px" height="24px" fill="transparent" stroke="white">
+          <path id="top" d="M0 4 L20 4"></path>
+          <path id="mid" d="M0 12 L20 12"></path>
+          <path id="btm" d="M0 20 L20 20"></path>
+        </svg>
+        <!-- <mat-icon class="ic menu">menu</mat-icon> -->
+      </span>
       <a class="kd-logo-wrap">
         <mat-icon class="kd-logo">donut_small</mat-icon>
         <span class="kd-appname">KITCHEN DOORS</span>
       </a>
     </span>
     <span class="el-right" fxHide.lt-sm>
-      <a routerLink="/login" class="kd-btn auth" mat-button>Login</a>
-      <a routerLink="/signup" class="kd-btn auth" mat-button>Sign Up</a>
+      <a routerLink="/login" mat-button class="kd-btn auth" *ngIf="!isAuth">Login</a>
+      <a routerLink="/signup" mat-button class="kd-btn auth" *ngIf="!isAuth">Sign Up</a>
+      <button mat-button class="kd-btn auth" *ngIf="isAuth">
+        <span style="padding-left:5px;color:#00ffa6;">Anonymous Guy</span>
+        <mat-icon style="margin-left:5px;color:#00ffa6;">person_outline</mat-icon>
+      </button>
     </span>
   </mat-toolbar>
-  <mat-toolbar [ngClass]="{'kd-toolbar': true}" fxHide.lt-sm>
-    <a class="kd-btn" mat-button routerLink="/console">Checks</a>
+  <nav mat-tab-nav-bar mat-align-tabs="left" [ngClass]="{'kd-toolbar': true}">
+    <a 
+      mat-tab-link
+      [ngClass]="activeShortcutTab===link.tabcode?'kd-tab active':'kd-tab'"
+      *ngFor="let link of navLinks"
+      (click)="onChangeTab(link.path,link.tabcode)"
+      routerLinkActive #rla="routerLinkActive"
+      [active]="rla.isActive"
+    >
+      <mat-icon class="ic tab-mobile" fxShow.lt-sm fxHide>{{link.icon}}</mat-icon>
+      <span fxHide.lt-sm>{{link.label}}</span>
+    </a>
+    <!-- <a class="kd-btn" mat-button routerLink="/console/checks">Checks</a>
     <a class="kd-btn" mat-button routerLink="/dashboard">Shift Report</a>
     <a class="kd-btn" mat-button routerLink="/dashboard">Dashboard</a>
-    <a class="kd-btn" mat-button routerLink="/dashboard">Inventories</a>
-  </mat-toolbar>
+    <a class="kd-btn" mat-button routerLink="/dashboard">Inventories</a> -->
+    <!-- <div class="kd-tab">
+      <a class="kd-btn add-shortcut" fxHide.lt-sm routerLink="/dashboard">
+        <mat-icon>add</mat-icon>
+      </a>
+    </div> -->
+  </nav>
 </nav>
+<!-- [routerLink]="link.path" -->
