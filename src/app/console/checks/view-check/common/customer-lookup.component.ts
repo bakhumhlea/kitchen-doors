@@ -1,4 +1,4 @@
-import { Component, Inject, Output, EventEmitter } from '@angular/core';
+import { Component, Inject, Output } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material'
 
 @Component({

@@ -26,8 +26,6 @@ export class ItemsTableComponent implements OnInit {
   onClickItem(item: Item) {
     console.log(item);
   }
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
 }

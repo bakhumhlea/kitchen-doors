@@ -25,6 +25,8 @@ import { AuthServices } from './auth/auth.service';
 import { CheckService } from './console/checks/check/check.service';
 import { SaveChangesModalComponent } from './common/save-changes-modal.component';
 import { AnimationService } from './navigation/header/animation.service';
+import { MenuItemsComponent } from './console/checks/view-check/menu-items/menu-items.component';
+import { DetailsEditorComponent } from './console/checks/view-check/common/details-editor.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { AnimationService } from './navigation/header/animation.service';
     ViewCheckComponent,
     ItemsTableComponent,
     CustomerLookupComponent,
-    SaveChangesModalComponent
+    DetailsEditorComponent,
+    SaveChangesModalComponent,
+    MenuItemsComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +64,10 @@ import { AnimationService } from './navigation/header/animation.service';
     AnimationService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [CustomerLookupComponent, SaveChangesModalComponent]
+  entryComponents: [
+    CustomerLookupComponent, 
+    SaveChangesModalComponent,
+    DetailsEditorComponent
+  ]
 })
 export class AppModule { }

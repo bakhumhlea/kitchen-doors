@@ -1,0 +1,5 @@
+input.kd-input-number::-webkit-inner-spin-button,
+input.kd-input-number::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

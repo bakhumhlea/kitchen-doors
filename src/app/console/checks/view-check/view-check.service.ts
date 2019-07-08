@@ -3,7 +3,7 @@ import { Check } from '../check/check.model';
 
 export class ViewCheckService{
   taxRate: number = 0.085;
-  isEmpty(obj) {
+  isEmpty(obj:any) {
     return obj === undefined ||
       obj === null || 
       obj.length === 0 ||

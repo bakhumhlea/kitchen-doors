@@ -6,8 +6,16 @@
     <div class="right">
       <div class="kd-check-console">
         <div class="hd-bar">
-          <span class="left" (click)="onCustomerLookup()"><mat-icon class="ic">person</mat-icon><span class="label">{{selectedCustomer?selectedCustomer:'Customer'}}</span></span>
-          <mat-icon class="ic">add</mat-icon>
+          <span class="el l" (click)="onEditDetails()">
+            <mat-icon class="ic">receipt</mat-icon>
+            <span class="label">{{this.check.title}}</span>
+            <!-- <span class="label">{{selectedCustomer?selectedCustomer:'Customer'}}</span> -->
+          </span>
+          <span class="el r" (click)="onEditDetails()">
+            <span class="label">{{this.check.guest}}</span>
+            <mat-icon class="ic" *ngIf="this.check.guest<=1">person_outline</mat-icon>
+            <mat-icon class="ic" *ngIf="this.check.guest>1">people_outline</mat-icon>
+          </span>
         </div>
         <div class="summary">
           <div class="row-item">
@@ -56,48 +64,5 @@
       </div>
     </div>
   </div>
-  <div id="kd-items-group" [ngClass]="isItemsContainerActive?'btm-row-content':'btm-row-content close'" fxLayout="column" fxLayoutAlign="start start">
-    <div class="kd-item-group" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="15px">
-      <div class="item-card" (click)="onAddItem({item: 'Caramelized Pork Belly', price: 14})">
-        Caramelized Pork Belly
-      </div>
-      <div class="item-card">
-        Caramelized Pork Belly
-      </div>
-      <div class="item-card">
-        Caramelized Pork Belly
-      </div>
-      <div class="item-card">
-        Caramelized Pork Belly
-      </div>
-      <div class="item-card">
-        Caramelized Pork Belly
-      </div>
-      <div class="item-card">
-        Caramelized Pork Belly
-      </div>
-    </div>
-    <mat-toolbar class="kd-tab-group below" fxLayout="row" fxLayoutAlign="start center">
-      <button 
-        mat-button
-        class="kd-btn tab ctrl"
-        (click)="onToggleItemContainer()"
-      >
-        <mat-icon *ngIf="isItemsContainerActive">clear</mat-icon>
-        <mat-icon *ngIf="!isItemsContainerActive">expand_less</mat-icon>
-      </button>
-      <button 
-        mat-button
-        class="kd-btn tab ctrl"
-      >
-        <mat-icon>apps</mat-icon>
-      </button>
-      <button 
-        mat-button
-        *ngFor="let itemTab of itemTabs"
-        [ngClass]="activeTab===itemTab.query?'kd-btn tab active':'kd-btn tab'"
-        (click)="onClickTabButton(itemTab)"
-      >{{itemTab.label}}</button>
-    </mat-toolbar>
-  </div>
+  <app-menu-items></app-menu-items>
 </section>

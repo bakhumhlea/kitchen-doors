@@ -1,0 +1,60 @@
+<div [ngClass]="isItemsContainerActive?'btm-row-content':'btm-row-content close'" fxLayout="column" fxLayoutAlign="start start">
+  <div [ngClass]="isMenuSelectionActive?'kd-item-group active':'kd-item-group'">
+    <div class="menus">
+      <button 
+        mat-button
+        *ngFor="let menu of menus; let i = index"
+        [ngClass]="i===activeMenuIndex?'kd-btn menu-select-btn active':'kd-btn menu-select-btn'"
+        (click)="onChangeMenu(i,menu)"
+      >
+        {{menu}}
+      </button>
+    </div>
+    <div class="menu-items-group" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+      <div 
+        class="item-card" 
+        *ngFor="let item of activeTabItems"
+        (click)="onAddItem(item)">
+        <span>{{item.label}}</span>
+      </div>
+    </div>
+  </div>
+  <mat-toolbar class="kd-tab-group below" fxLayout="row" fxLayoutAlign="start center">
+    <button 
+      mat-button
+      class="kd-btn tab menu-expand"
+      (click)="onToggleMenuSelection()"
+    >
+      <mat-icon class="ic">more_vert</mat-icon>
+    </button>
+    <button 
+      mat-button
+      class="kd-btn tab menu"
+      (click)="onChangeMenu()"
+    >
+      <span>{{menus[activeMenuIndex]}}</span>
+  </button>
+    <div class="kd-item-tabs">
+      <button 
+        mat-button
+        *ngFor="let categoryTab of categoryTabs"
+        [ngClass]="activeTab===categoryTab?'kd-btn tab active':'kd-btn tab'"
+        (click)="onClickTabButton(categoryTab)"
+      >{{formatText(categoryTab)}}</button>
+    </div>
+    <button 
+      mat-button
+      class="kd-btn tab ctrl view"
+    >
+      <mat-icon>apps</mat-icon>
+    </button>
+    <button 
+      mat-button
+      class="kd-btn tab ctrl"
+      (click)="onToggleItemContainer()"
+    >
+      <mat-icon *ngIf="isItemsContainerActive">clear</mat-icon>
+      <mat-icon *ngIf="!isItemsContainerActive">expand_less</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>

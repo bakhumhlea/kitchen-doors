@@ -1,12 +1,12 @@
 <mat-sidenav-container class="nav-container">
-    <mat-sidenav #sidenav mode="side" role="navigation" [opened]="false">
-      <app-sidenav (sidenavToggle)="sidenav.close()"></app-sidenav>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
-      <div [ngClass]="{'kd-app-content': true}">
-        <router-outlet></router-outlet>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" role="navigation" [opened]="false">
+    <app-sidenav (sidenavToggle)="sidenav.close()"></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+    <div [ngClass]="{'kd-app-content': true}">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 

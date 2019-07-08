@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap, map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 
 import { ViewCheckService } from './view-check.service';
 import { CustomerLookupComponent } from './common/customer-lookup.component';
 import { CheckService } from '../check/check.service';
 import { Check } from '../check/check.model';
-import { Item } from '../check/item.model';
 import { AnimationService } from 'src/app/navigation/header/animation.service';
+import { DetailsEditorComponent } from './common/details-editor.component';
 
 
 @Component({
@@ -18,22 +17,9 @@ import { AnimationService } from 'src/app/navigation/header/animation.service';
   styleUrls: ['./view-check.component.css']
 })
 export class ViewCheckComponent implements OnInit {
-  
-  itemTabs = [
-    {label:'Bites',query: 'bites'},
-    {label:'Greens',query: 'greens'},
-    {label:'Curries',query: 'curries'},
-    {label:'Meats',query: 'meats'},
-    {label:'Fish & Seafood',query: 'fish_seafood'},
-    {label:'Sides',query: 'sides'},
-    {label:'Desserts',query: 'desserts'}
-  ];
-
-  activeTab = null;
-  isItemsContainerActive = true;
-  displayedColumns: string[] = ['item', 'qty', 'price', 'subtotal', 'discount','total'];
   check: Check;
   selectedCustomer: string;
+  checkSubscription: Subscription;
 
   constructor(
     private viewCheckService: ViewCheckService, 
@@ -43,16 +29,17 @@ export class ViewCheckComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {}
+
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
     if (id === 'new-check' || !!!id) {
-      this.check = this.checkService.getEmptyCheck();
+      this.check = this.checkService.getEmptyCheck({host: 'Host name'});
     } else {
       this.check = this.checkService.getCheck(id);
     }
-  }
-  onAddItem(item:Item) {
-    this.checkService.addItem(item);
+    this.checkSubscription = this.checkService.checkUpdate.subscribe(value => {
+      this.check = this.checkService.getCurrentCheck();
+    })
   }
   onCustomerLookup() {
     const dialogRef = this.dialog.open(CustomerLookupComponent, {data: {
@@ -64,6 +51,16 @@ export class ViewCheckComponent implements OnInit {
         this.selectedCustomer = dialogRef.componentInstance.selectedCustomer;
       }
     })
+  }
+  onEditDetails() {
+    const dialogRef = this.dialog.open(DetailsEditorComponent, { 
+      data: {guest: this.check.guest, title: this.check.title },
+      width: '400px',
+      height: '360px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) { this.checkService.editCheckDetails(result); }
+    });
   }
   saveCheck() {
     let id = this.route.snapshot.paramMap.get('id');
@@ -85,13 +82,7 @@ export class ViewCheckComponent implements OnInit {
   getTotal() {
     return this.viewCheckService.getTotal(this.check);
   }
-  // inteface control method
-  onClickTabButton(tab:any) {
-    this.activeTab = tab.query;
-  }
-  onToggleItemContainer() {
-    this.isItemsContainerActive = !this.isItemsContainerActive;
-  }
+  // interface control method
   onToggleBtnPanel() {
     this.animationService.toggleBtnPanel();
   }

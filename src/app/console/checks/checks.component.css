@@ -1,6 +1,10 @@
 .kd-all-checks {
   width: 100%;
-  padding: 24px 24px;
+  padding: 0px 0px;
+  flex-wrap: wrap;
+  width: 100vw;
+  max-height: calc(100vh - 85px);
+  overflow-y: scroll;
 }
 mat-tab-group {
   font-family: 'Poppins', 'Montserrat', sans-serif;
@@ -14,6 +18,7 @@ mat-tab-group {
   height: 200px;
   border-radius: 4px;
   font-weight: 300;
+  margin: 24px;
   background-color: #00ffa627;
   border: none;
   outline: none;
