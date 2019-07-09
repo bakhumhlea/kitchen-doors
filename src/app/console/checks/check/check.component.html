@@ -1,6 +1,6 @@
 <button  class="check-mod" fxLayout="column" fxLayoutAlign="center" (click)="onClick(check.id)">
   <div class="checks-content">
-    <div class="text-info top">
+    <div class="text-info top" [ngClass]="{'closed': check.closed}">
       <span class="flx al-c">
         <mat-icon class="ic info on-r">person</mat-icon>
         <span>{{check.guest}}</span>
@@ -16,9 +16,9 @@
           <span>{{check.host}}</span>
       </span>
       <span class="flx al-c">
-        <mat-icon class="ic info check" *ngIf="!isCheckClose()">check_circle</mat-icon>
-        <mat-icon class="ic info check" *ngIf="isCheckClose()">receipt</mat-icon>
-        <span>{{isCheckClose()?'Adjust Tips':'Saved'}}</span>
+        <mat-icon class="ic info check" *ngIf="!isCheckClosed()">check_circle</mat-icon>
+        <mat-icon class="ic info check" *ngIf="isCheckClosed()">receipt</mat-icon>
+        <span>{{isCheckClosed()?'Adjust Tips':'Saved'}}</span>
       </span>
     </div>
   </div>

@@ -11,11 +11,14 @@ import { CheckService } from '../../check/check.service';
 })
 export class ItemsTableComponent implements OnInit {
   @Input() check: Check;
-  displayedColumns: string[] = ['item', 'qty', 'price', 'subtotal', 'discount','total'];
+  displayedColumns: string[] = ['delete','item', 'qty', 'price', 'subtotal', 'discount','total'];
   items = [];
-  private itemsSubscription: Subscription;
+  private showDeleteBtn: number = null;
+  private checkSubscription: Subscription;
 
-  constructor(private checkService: CheckService) { }
+  constructor(
+    private checkService: CheckService
+  ) { }
 
   getSubtotal(item: Item) {
     return item.price * item.qty
@@ -23,9 +26,32 @@ export class ItemsTableComponent implements OnInit {
   getTotal(item: Item) {
     return (((item.price) - (item.price * item.discount)) * item.qty);
   }
-  onClickItem(item: Item) {
-    console.log(item);
+  onClickItem(index:number) {
+    if (this.showDeleteBtn) {
+      this.showDeleteBtn = null;
+    } else {
+      this.showDeleteBtn = index;
+    }
   }
-  ngOnInit() {}
+  isCheckClosed() {
+    return this.checkService.isCheckClosed();
+  }
+  increment(item: Item) {
+    item.qty++;
+  }
+  decrement(item: Item) {
+    if (item.qty>1) item.qty--;
+  }
+  removeItem(index:number) {
+    this.checkService.removeItem(index);
+  }
+  ngOnInit() {
+    // console.log(this.checkId);
+    // this.checkService.getCheck(this.checkId);
+    // this.checkSubscription = this.checkService.checkUpdate.subscribe(value => {
+    //   console.log(value)
+    //   this.checkRef = value;
+    // });
+  }
 
 }

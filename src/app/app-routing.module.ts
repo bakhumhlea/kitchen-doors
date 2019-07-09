@@ -10,12 +10,11 @@ import { ViewCheckComponent } from './console/checks/view-check/view-check.compo
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'console/checks', component: ChecksComponent},
-  { path: 'console/checks/viewcheck/:id', component: ViewCheckComponent}
+  { path: 'console/checks', component: ChecksComponent, canActivate: [AuthGuard]},
+  { path: 'console/checks/viewcheck/:id', component: ViewCheckComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

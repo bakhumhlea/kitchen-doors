@@ -1,4 +1,7 @@
-<section class="kd-new-check" fxLayout="column" fxLayoutAlign="strecth space-between">
+<section class="kd-new-check" *ngIf="!!!check">
+  <div class="kd-spinner"><mat-spinner color="warn"></mat-spinner></div>
+</section>
+<section class="kd-new-check" fxLayout="column" fxLayoutAlign="strecth space-between" *ngIf="check">
   <div class="top-row-content" fxLayout="row" fxLayoutAlign="start start">
     <div class="left">
       <app-items-table [check]="check"></app-items-table>
@@ -7,14 +10,20 @@
       <div class="kd-check-console">
         <div class="hd-bar">
           <span class="el l" (click)="onEditDetails()">
-            <mat-icon class="ic">receipt</mat-icon>
-            <span class="label">{{this.check.title}}</span>
-            <!-- <span class="label">{{selectedCustomer?selectedCustomer:'Customer'}}</span> -->
+            <span class="flx al-c">
+              <mat-icon class="ic">receipt</mat-icon>
+              <span class="label">{{check.title }}</span>
+            </span>
+            <span class="flx al-c">
+              <span class="label">{{check.guest }}</span>
+              <mat-icon class="ic" *ngIf="check.guest===1">person_outline</mat-icon>
+              <mat-icon class="ic" *ngIf="check.guest!==1">people_outline</mat-icon>
+            </span>
           </span>
-          <span class="el r" (click)="onEditDetails()">
-            <span class="label">{{this.check.guest}}</span>
-            <mat-icon class="ic" *ngIf="this.check.guest<=1">person_outline</mat-icon>
-            <mat-icon class="ic" *ngIf="this.check.guest>1">people_outline</mat-icon>
+          <span class="el r" (click)="discardCheck()">
+            <span>{{check.closed?'Done':'Discard'}}</span>
+            <mat-icon class="ic" *ngIf="!check.closed">delete_outline</mat-icon>
+            <mat-icon class="ic" *ngIf="check.closed">done</mat-icon>
           </span>
         </div>
         <div class="summary">
@@ -44,21 +53,22 @@
         <div class="btn-rack">
           <div class="expend-panel" id="btn-rack-panel">
             <div class="row">
-              <button class="kd-btn cash-out" mat-button>Cash</button>
+              <button class="kd-btn cash-out" mat-button (click)="closeCheck(check.id,'cash')" [disabled]="isCheckClosed()">Cash</button>
               <button class="kd-btn more" mat-button (click)="onToggleBtnPanel()"><mat-icon>more_horiz</mat-icon></button>
-              <button class="kd-btn cash-out" mat-button>Credit</button>
+              <button class="kd-btn cash-out" mat-button (click)="closeCheck(check.id,'credit')" [disabled]="isCheckClosed()">Credit</button>
+            </div>
+            <div class="row">
+                <button class="kd-btn extra" mat-button (click)="closeCheck(check.id,'mobile')" [disabled]="isCheckClosed()">Mobile Payment</button>
+
+              <button class="kd-btn extra left" mat-button [disabled]="isCheckClosed()">Split Tender</button>
             </div>
             <div class="row">
               <button class="kd-btn extra left" mat-button>Print Check</button>
-              <button class="kd-btn extra left" mat-button>Split Tender</button>
-            </div>
-            <div class="row">
-              <button class="kd-btn extra left" mat-button>Reprint Ticket</button>
-              <button class="kd-btn extra" mat-button>Mobile Payment</button>
+              <button class="kd-btn extra left" mat-button (click)="adjustTips()" [disabled]="check.adjusted_tips">Adjust Tips</button>
             </div>
           </div>
           <div class="row">
-            <button mat-button class="kd-btn save" (click)="saveCheck()">Save Ticket</button>
+            <button mat-button class="kd-btn save" (click)="saveCheck()">{{check.adjusted_tips?'Close':'Save Ticket'}}</button>
           </div>
         </div>
       </div>

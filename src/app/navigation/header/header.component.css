@@ -53,6 +53,7 @@
 .kd-btn.add-shortcut:hover {
   background-color:  #3a3a3a;
 }
+
 .kd-toolbar {
   max-width: 100vw;
   font-weight: 300;
@@ -84,8 +85,12 @@
   font-weight: 300;
   opacity: 0.8;
 }
+.kd-tab:hover {
+  background-color: #292929;
+}
 .kd-tab.active {
-  background-color: #3e3e3e;
+  /* background-color: #3e3e3e; */
+  background-color: #00ff9780;
   opacity: 1;
 }
 .ic.tab-mobile {
@@ -100,6 +105,13 @@
 }
 .ic.menu path {
   transition: 0.5s 0s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.ic.building {
+  float: right;
+  font-size: 1.2em;
+  transform: translateY(0px);
+  color: #00ffa6;
+  opacity: 0.3;
 }
 @media only screen and (max-width: 400px) {
   .kd-logo {

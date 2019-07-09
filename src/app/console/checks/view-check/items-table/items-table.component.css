@@ -1,7 +1,7 @@
 .kd-table {
   font-family: 'poppins';
-  /* font-weight: 200; */
-  width: 100%;
+  width: calc(100% + 60px);
+  transform: translateX(-60px);
   background-color: #ddfff3;
 }
 .kd-item-center {
@@ -11,10 +11,26 @@
   /* letter-spacing: 1px; */
   /* font-weight: 300; */
 }
-.kd-item-center:first-of-type {
+.kd-item-center.delete-btn {
+  width: 50px;
+  padding: 0;
+  background-color: #ef2626;
+  border-right: 1px solid #d81818;
+  color: white;
+}
+.kd-item-center.delete-btn:hover {
+  background-color: #eb4141;
+}
+.kd-item-center.delete-btn .trash-icon {
+  color: white;
+  padding-top: 4px;
+  font-size: 1.5em;
+}
+.kd-item-center.item-label {
   text-align: left;
   width: 250px;
   letter-spacing: 0px;
+  padding-left: 24px;
 }
 tr.mat-header-row {
   height: 30px;
@@ -28,11 +44,23 @@ tr.mat-row {
 }
 tr.mat-row:hover {
   cursor: pointer;
-  /* transform: translate(50px, 0px); */
-  transition: 0.2s 0s all cubic-bezier(0.075, 0.82, 0.165, 1);
+  /* transform: translate(60px, 0px); */
+  transition: 0.4s 0s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.kd-item-center.slide {
+  transform: translate(60px, 0px);
 }
 tr.mat-row:hover .kd-item-center {
+  /* color: white; */
   background-color: #b6ffe5;
+  /* background-color: #ef2626; */
+}
+tr.mat-row:hover .kd-item-center.delete-btn {
+  background-color: #ef2626;
+}
+tr.mat-row:hover .kd-item-center .kd-mini-btn.circle {
+  /* color: white; */
+  /* border: 1px solid white; */
 }
 th.mat-header-cell {
   color: black;
@@ -47,4 +75,118 @@ td.mat-cell {
   font-size: 1.1em;
   font-weight: 300;
   border-bottom-color: #00000018;
+}
+.flx.al-c {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.kd-mini-btn.circle {
+  background-color: transparent;
+  width: 23px;
+  height: 23px;
+  border-radius: 100px;
+  border: 1px solid #c5c5c5;
+  outline: none;
+  font-size: 0.8em;
+}
+.kd-mini-btn.circle .ic {
+  margin-top: 4px;
+  width: 20px;
+  font-size: 1.4em;
+  height: 20px;
+}
+.number-value {
+  display: block;
+  width: 32px;
+}
+
+.kd-items-table {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.kd-item-row {
+  display: flex;
+  align-items: center;
+  justify-items: flex-end;
+  height: 30px;
+  color: black;
+  background-color: #ddfff3;
+  font-family: 'poppins';
+  font-size: 0.8em;
+  font-weight: 300;
+  /* width: calc(100% + 60px); */
+  /* transform: translate(-60px, 0px); */
+  transition: 0.4s 0s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.kd-item-row.header {
+  height: 30px;
+  font-weight: 600;
+  background-color: white;
+}
+.kd-item-row .cell {
+  text-align: center;
+  min-width: 90px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #00000018;
+  justify-content: center;
+}
+.kd-item-row .cell.delete-btn {
+  min-width: 50px;
+  transition: 0.1s 0s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.kd-item-row .cell.delete-btn .trash-icon {
+  cursor: pointer;
+  display: none;
+  border-radius: 100px;
+  background-color: #ebebeb;
+  height: 24px;
+  width: 24px;
+  font-size: 1.2em;
+  padding-top: 3px;
+  font-size: 1.4em;
+  color: #696969;
+  transition: 0.1s 0s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.kd-item-row:hover .cell.delete-btn .trash-icon {
+  display: block;
+}
+.kd-item-row .cell.delete-btn:hover {
+  border-bottom: 1px solid #d81818;
+}
+.kd-item-row.header .cell.delete-btn:hover {
+  border-bottom: 1px solid #00000018;
+}
+.kd-item-row .cell.delete-btn:hover .trash-icon {
+  color: white;
+  background-color: #ef2626;
+  height: 100%;
+  width: 100%;
+  padding-top: 6px;
+  border-radius: 0;
+}
+.kd-item-row .cell.label {
+  text-align: left;
+  width: 100%;
+  padding-left: 24px;
+  justify-content: flex-start;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.kd-item-row .cell.total {
+  text-align: right;
+  justify-content: flex-end;
+  min-width: 70px;
+  padding-right: 10px;
+}
+.kd-item-row .cell.total.mr {
+  padding-right: 24px;
+}
+.kd-item-row .kd-mini-btn.circle {
+  cursor: pointer;
+}
+.kd-item-row .kd-mini-btn.circle:hover {
+  background-color: white;
 }

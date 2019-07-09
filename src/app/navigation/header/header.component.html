@@ -17,13 +17,13 @@
     <span class="el-right" fxHide.lt-sm>
       <a routerLink="/login" mat-button class="kd-btn auth" *ngIf="!isAuth">Login</a>
       <a routerLink="/signup" mat-button class="kd-btn auth" *ngIf="!isAuth">Sign Up</a>
-      <button mat-button class="kd-btn auth" *ngIf="isAuth">
-        <span style="padding-left:5px;color:#00ffa6;">Anonymous Guy</span>
-        <mat-icon style="margin-left:5px;color:#00ffa6;">person_outline</mat-icon>
+      <button mat-button class="kd-btn auth" *ngIf="isAuth" (click)="onToggleSettingPanel()">
+        <span style="padding-left:5px;color:#00ffa6;">{{user?.email}}</span>
+        <mat-icon style="margin-left:5px;color:#00ffa6;">settings</mat-icon>
       </button>
     </span>
   </mat-toolbar>
-  <nav mat-tab-nav-bar mat-align-tabs="left" [ngClass]="{'kd-toolbar': true}">
+  <nav mat-tab-nav-bar mat-align-tabs="left" [ngClass]="{'kd-toolbar': true}" *ngIf="isAuth">
     <a 
       mat-tab-link
       [ngClass]="activeShortcutTab===link.tabcode?'kd-tab active':'kd-tab'"
@@ -31,9 +31,11 @@
       (click)="onChangeTab(link.path,link.tabcode)"
       routerLinkActive #rla="routerLinkActive"
       [active]="rla.isActive"
+      [disabled]="link.building"
     >
       <mat-icon class="ic tab-mobile" fxShow.lt-sm fxHide>{{link.icon}}</mat-icon>
       <span fxHide.lt-sm>{{link.label}}</span>
+      <mat-icon class="ic building" *ngIf="link.building">build</mat-icon>
     </a>
     <!-- <a class="kd-btn" mat-button routerLink="/console/checks">Checks</a>
     <a class="kd-btn" mat-button routerLink="/dashboard">Shift Report</a>

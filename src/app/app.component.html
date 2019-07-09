@@ -1,12 +1,15 @@
-<mat-sidenav-container class="nav-container">
-  <mat-sidenav #sidenav mode="side" role="navigation" [opened]="false">
+<mat-sidenav-container class="nav-container" [hasBackdrop]="false">
+  <mat-sidenav #sidenav mode="side" position="start" role="navigation" [opened]="false">
     <app-sidenav (sidenavToggle)="sidenav.close()"></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+    <app-header (sidenavToggle)="sidenav.toggle()" (rightnavToggle)="sidenavright.toggle()"></app-header>
     <div [ngClass]="{'kd-app-content': true}">
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
+  <mat-sidenav #sidenavright mode="push" position="end" [opened]="false">
+    <app-setting-panel></app-setting-panel>
+  </mat-sidenav>
 </mat-sidenav-container>
 

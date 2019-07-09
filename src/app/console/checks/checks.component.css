@@ -37,6 +37,8 @@ mat-tab-group {
   .kd-all-checks {
     width: 100%;
     padding: 10px 24px;
+    flex-wrap: nowrap;
+    overflow-x: hidden; 
   }
   .section-title {
     display: flex;
@@ -49,7 +51,9 @@ mat-tab-group {
   }
   .check-mod.btn {
     width: 100%;
+    min-height: 80px;
     height: 80px;
+    margin: 0;
   }
   .ic.add {
     transform: scale(1.4);

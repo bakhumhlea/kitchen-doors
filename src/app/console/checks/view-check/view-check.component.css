@@ -1,3 +1,9 @@
+.kd-spinner {
+  position:absolute;
+  left: 50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
 .kd-new-check {
   width: 100%;
   max-width: 100vw;
@@ -44,7 +50,7 @@ mat-tab {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #149275;
+  background-color: #5d5d5d;
   padding: 0px;
   height: 30px;
   font-size: 0.8em;
@@ -57,21 +63,32 @@ mat-tab {
   padding: 0 10px;
   height: 100%;
 }
+.hd-bar .flx.al-c {
+  display: flex;
+  align-items: center;
+}
 .hd-bar .el.l {
   width: 70%;
-  border-right: 1px solid #0e6f58;
+  border-right: 1px solid #3c3c3c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .hd-bar .el.r {
   width: 30%;
   justify-content: flex-end;
+  background: #b14040;
 }
 .hd-bar .el.l .label,
 .hd-bar .el.r .label {
-  margin: 10px;
+  margin: 3px;
 }
-.hd-bar .el:hover {
+.hd-bar .el.l:hover {
   color: #00ffa6;
-  background: #1da786;
+  background: #686868;
+}
+.hd-bar .el.r:hover {
+  background: #c44646;
 }
 .ic {
   transform: scale(0.7);
@@ -139,7 +156,7 @@ mat-tab {
   background-color: #5a8dce;
 }
 .btn-rack .row .kd-btn.save {
-  background-color: #f54646;
+  background-color: #00a1a9;
   border-top: 1px solid #0e4437;
 }
 .btn-rack .row .kd-btn.more {

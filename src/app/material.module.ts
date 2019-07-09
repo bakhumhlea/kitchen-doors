@@ -13,6 +13,7 @@ import {
   MatTableModule,
   MatDialogModule
 } from '@angular/material';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { FlexLayoutModule } from '@angular/flex-layout'
 
 
@@ -31,6 +32,7 @@ import { FlexLayoutModule } from '@angular/flex-layout'
     MatTabsModule,
     MatTableModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     FlexLayoutModule ],
   exports: 
   [ MatButtonModule, 
@@ -45,6 +47,7 @@ import { FlexLayoutModule } from '@angular/flex-layout'
     MatTabsModule,
     MatTableModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     FlexLayoutModule ],
   providers: [],
 })

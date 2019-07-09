@@ -1,0 +1,18 @@
+<section class="kd-sidenav">
+  <div class="kd-sidenav-content">
+    <div class="kd-nav-header" fxLayout="row" fxLayoutAlign="space-between center" *ngIf="!isAuth">
+      <span class="kd-nav-title">
+        <span>App Setting</span>
+        <!-- <mat-icon class="ic gear">settings</mat-icon> -->
+      </span>
+      <mat-icon>more_vert</mat-icon>
+    </div>
+    <div class="kd-nav-content" *ngIf="!isAuth">
+      <div class="notice">
+        <mat-icon class="ic build">build</mat-icon>
+        <p class="message">Available Soon</p>
+      </div>
+    </div>
+  </div>
+</section>
+  

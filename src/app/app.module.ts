@@ -3,7 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
-
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth'
+import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 
 import { DashboardComponent } from './dashboard.component';
@@ -27,6 +30,8 @@ import { SaveChangesModalComponent } from './common/save-changes-modal.component
 import { AnimationService } from './navigation/header/animation.service';
 import { MenuItemsComponent } from './console/checks/view-check/menu-items/menu-items.component';
 import { DetailsEditorComponent } from './console/checks/view-check/common/details-editor.component';
+import { SettingPanelComponent } from './navigation/setting-panel/setting-panel.component';
+import { HeaderService } from './navigation/header/header.service';
 
 
 @NgModule({
@@ -46,7 +51,8 @@ import { DetailsEditorComponent } from './console/checks/view-check/common/detai
     CustomerLookupComponent,
     DetailsEditorComponent,
     SaveChangesModalComponent,
-    MenuItemsComponent
+    MenuItemsComponent,
+    SettingPanelComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,14 +60,18 @@ import { DetailsEditorComponent } from './console/checks/view-check/common/detai
     FormsModule,
     AppRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [
     DashboardService,
     ViewCheckService,
     AuthServices,
     CheckService,
-    AnimationService
+    AnimationService,
+    HeaderService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

@@ -1,13 +1,24 @@
-<table mat-table *ngIf="check" [dataSource]="check.items" class="mat-elevation-z8" [ngClass]="{'kd-table': true}">
+<table mat-table *ngIf="check" [dataSource]="check?.items" class="mat-elevation-z8" [ngClass]="{'kd-table': true}" fxHide>
     <!-- Item Column -->
+<ng-container matColumnDef="delete">
+  <th class="kd-item-center delete-btn" mat-header-cell *matHeaderCellDef><mat-icon class="trash-icon">delete_outline</mat-icon></th>
+  <td class="kd-item-center delete-btn" mat-cell *matCellDef="let item; let i = index" (click)="deleteItem(i)"><mat-icon class="trash-icon">delete_outline</mat-icon></td>
+  <!-- <td class="kd-item-center" mat-footer-cell *matFooterCellDef> Total </td> -->
+</ng-container>
 <ng-container matColumnDef="item">
-  <th class="kd-item-center" mat-header-cell *matHeaderCellDef> Items </th>
-  <td class="kd-item-center" mat-cell *matCellDef="let item"> {{item.label}} </td>
+  <th class="kd-item-center item-label" mat-header-cell *matHeaderCellDef> Items </th>
+  <td class="kd-item-center item-label" mat-cell *matCellDef="let item"> {{item.label}} </td>
   <!-- <td class="kd-item-center" mat-footer-cell *matFooterCellDef> Total </td> -->
 </ng-container>
 <ng-container matColumnDef="qty">
   <th class="kd-item-center" mat-header-cell *matHeaderCellDef> Quantity </th>
-  <td class="kd-item-center" mat-cell *matCellDef="let item"> {{item.qty}} </td>
+  <td class="kd-item-center" mat-cell *matCellDef="let item">
+    <div class="flx al-c">
+      <button class="kd-mini-btn circle" (click)="decrement(item)"><mat-icon class="ic">remove</mat-icon></button>
+      <span class="number-value">{{item.qty}}</span>
+      <button class="kd-mini-btn circle" (click)="increment(item)"><mat-icon class="ic">add</mat-icon></button>
+    </div>
+  </td>
 </ng-container>
 <ng-container matColumnDef="price">
   <th class="kd-item-center" mat-header-cell *matHeaderCellDef> Unit Price </th>
@@ -26,7 +37,36 @@
   <td class="kd-item-center" mat-cell *matCellDef="let item"> {{getTotal(item) | currency}} </td>
 </ng-container>
 <tr class="kd-item-center" mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-<tr class="kd-item-center" mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onClickItem(item)"></tr>
+<tr [ngClass]="showDeleteBtn===i?'kd-item-center slide':'kd-item-center'" mat-row *matRowDef="let row; columns: displayedColumns;let i = index" (click)="onClickItem(i)" [hidden]="!!item"></tr>
 <!-- <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr> -->
 </table>
+<div class="kd-items-table">
+  <div class="kd-item-row header">
+    <span class="cell label">Items</span>
+    <span class="cell qty">Qty</span>
+    <span class="cell price">Price</span>
+    <span class="cell subtotal">Subtotal</span>
+    <span class="cell discount">Discount</span>
+    <span [ngClass]="isCheckClosed()?'cell total mr':'cell total'">Total</span>
+    <span class="cell delete-btn" *ngIf="!isCheckClosed()"></span>
+  </div>
+  <div class="kd-item-row" *ngFor="let item of check.items; let i = index">
+    <span class="cell label">{{item.label}}</span>
+    <span class="cell qty">
+      <div class="flx al-c">
+        <button class="kd-mini-btn circle" (click)="decrement(item)" [hidden]="isCheckClosed()"><mat-icon class="ic">remove</mat-icon></button>
+        <span class="number-value">{{item.qty}}</span>
+        <button class="kd-mini-btn circle" (click)="increment(item)" [hidden]="isCheckClosed()"><mat-icon class="ic">add</mat-icon></button>
+      </div>
+    </span>
+    <span class="cell price">{{item.price | currency}}</span>
+    <span class="cell subtotal">{{getSubtotal(item) | currency}}</span>
+    <span class="cell discount">{{item.discount && (item.discount*100)}}%</span>
+    <span [ngClass]="isCheckClosed()?'cell total mr':'cell total'">{{getTotal(item) | currency}}</span>
+    <span class="cell delete-btn" *ngIf="!isCheckClosed()">
+      <mat-icon class="trash-icon" (click)="removeItem(i)">delete_forever</mat-icon>
+    </span>
+  </div>
+</div>
+
 <!-- <div *ngFor="let item of allitems">{{item.item}}</div> -->

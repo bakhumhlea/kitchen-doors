@@ -6,7 +6,7 @@
   height: 260px;
   background-color: #e4fff5;
   overflow: hidden;
-  box-shadow: 0px -3px 8px 1px rgba(99, 99, 99, 0.1), 0px -1px 2px 0px rgba(99, 99, 99, 0.1);
+  box-shadow: 0px -4px 8px 1px rgba(31, 31, 31, 0.1), 0px -2px 2px 0px rgba(0, 0, 0, 0.1);
   transition: 0.4s 0s all cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .btm-row-content.close {
@@ -114,6 +114,7 @@
 }
 .kd-btn.tab {
   cursor: pointer;
+  min-width: 80px;
   max-width: 200px;
   height: 100%;
   font-family: 'Poppins', 'Montserrat', sans-serif;
@@ -133,9 +134,9 @@
   max-width: 150px;
   min-width: 100px;
   padding: 0px;
-  background-color: #9c6c23;
-  border-right: 3px solid #7d571d;
-  border-left: 1px solid #925e10;
+  background-color: #00cc80;
+  border-right: 3px solid #009c62;
+  border-left: 1px solid #009c62;
   box-shadow: 2px 0 5px 0 #2b2b2b59, 0px 0 1px 0 #1b1a1a59;
 }
 .kd-btn.tab.menu-expand {
@@ -143,7 +144,8 @@
   min-width: 50px;
   width: 50px;
   padding: 0 0px;
-  background-color: #9c6c23;
+  background-color: #00cc80;
+  /* background-color: #9c6c23; */
 }
 .kd-btn.tab.ctrl {
   min-width: 50px;

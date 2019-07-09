@@ -7,7 +7,7 @@
       </button>
       <div class="user-name">
         <mat-icon class="ic account">face</mat-icon>
-        <span>Username</span>
+        <span>Johny Doughnut</span>
       </div>
     </div>
     <div *ngIf="isAuth">
@@ -17,32 +17,37 @@
           <mat-icon class="ic item">receipt</mat-icon>
           <span>Checks</span>
         </a>
-        <a mat-list-item class="kd-item link" mat-button (click)="onCloseSideNav()">
+        <a mat-list-item class="kd-item link" mat-button [routerLink]="[ '/console/checks/viewcheck/new-check' ]" (click)="onCloseSideNav()">
           <mat-icon class="ic item">credit_card</mat-icon>
           <span>Transaction</span>
         </a>
       </div>
       <label class="kd-label">Manager</label>
       <div class="kd-sub-container">
-        <a mat-list-item class="kd-item link" mat-button [routerLink]="[ '/dashboard' ]" (click)="onCloseSideNav()">
+        <a mat-list-item class="kd-item link" mat-button (click)="onCloseSideNav()">
           <mat-icon class="ic item">dashboard</mat-icon>
           <span>Dashboard</span>
+          <mat-icon class="ic building">build</mat-icon>
         </a>
         <a mat-list-item class="kd-item link" mat-button (click)="onCloseSideNav()">
           <mat-icon class="ic item">today</mat-icon>
           <span>Schedule</span>
+          <mat-icon class="ic building">build</mat-icon>
         </a>
         <a mat-list-item class="kd-item link" mat-button (click)="onCloseSideNav()">
           <mat-icon class="ic item">notes</mat-icon>
           <span>Shift Report</span>
+          <mat-icon class="ic building">build</mat-icon>
         </a>
         <a mat-list-item class="kd-item link" mat-button (click)="onCloseSideNav()">
           <mat-icon class="ic item">bar_chart</mat-icon>
           <span>Statistic</span>
+          <mat-icon class="ic building">build</mat-icon>
         </a>
         <a mat-list-item class="kd-item link" mat-button (click)="onCloseSideNav()">
           <mat-icon class="ic item">people</mat-icon>
           <span>Teams</span>
+          <mat-icon class="ic building">build</mat-icon>
         </a>
       </div>
       <label class="kd-label">Storage</label>
@@ -50,10 +55,12 @@
         <a mat-list-item class="kd-item link" mat-button (click)="onCloseSideNav()">
           <mat-icon class="ic item">kitchen</mat-icon>
           <span>Inventories</span>
+          <mat-icon class="ic building">build</mat-icon>
         </a>
         <a mat-list-item class="kd-item link" mat-button (click)="onCloseSideNav()">
           <mat-icon class="ic item">note_add</mat-icon>
           <span>Ordering</span>
+          <mat-icon class="ic building">build</mat-icon>
         </a>
       </div>
     </div>

@@ -1,63 +1,77 @@
 <section class="kd-signup-form">
-  <h3 class="kd-hd">Please Sign Up</h3>
-  <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <mat-form-field class="kd-form-field">
-      <input 
-        type="email" 
-        matInput 
-        name="email" 
-        placeholder="Your email" 
-        ngModel
-        email
-        required
-        #emailInput="ngModel"
+  <div class="left">
+    <div class="logo">
+      <span class="kd-logo-wrap">
+        <mat-icon class="kd-logo">donut_small</mat-icon>
+      </span>
+    </div>
+    <h1 class="kd-hd slogan">Welcome to <span class="kd-appname">KITCHEN DOORS</span><br/> 
+    A Modern POS application.</h1>
+    <h3 class="kd-hd sub">Try the app, today. It super cool!</h3>
+    <button class="kd-beta-btn" mat-raised-button color="warn" (click)="tryApp()">Try Beta v0.23</button>
+  </div>
+  <div class="right">
+    <h3 class="kd-hd">Sign up with your Email</h3>
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <mat-form-field class="kd-form-field">
+        <input 
+          type="email" 
+          matInput 
+          name="email" 
+          placeholder="Your email" 
+          ngModel
+          email
+          required
+          #emailInput="ngModel"
+        >
+      <mat-error *ngIf="emailInput.hasError('required')">Email field should not be empty</mat-error>
+      <mat-error *ngIf="!emailInput.hasError('required')">Email is invalid</mat-error>
+      </mat-form-field>
+      <mat-form-field class="kd-form-field" hintLabel="Password should be at least 8 characters">
+        <input 
+          type="password" 
+          matInput 
+          name="password" 
+          placeholder="Your password" 
+          ngModel
+          minlength="8"
+          required
+          #pwInput="ngModel"
+        >
+        <mat-hint align="end">{{ pwInput.value?.length}} / 6</mat-hint>
+      <mat-error>At least 8 characters long</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input 
+          matInput 
+          ngModel
+          placeholder="Your birthdate" 
+          name="birthdate"
+          [matDatepicker]="picker"
+          [max]="maxDate"
+        >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker ></mat-datepicker>
+      </mat-form-field>
+      <mat-checkbox 
+        ngModel 
+        name="agree" 
+        required 
+        color="primary"
       >
-    <mat-error *ngIf="emailInput.hasError('required')">Email field should not be empty</mat-error>
-    <mat-error *ngIf="!emailInput.hasError('required')">Email is invalid</mat-error>
-    </mat-form-field>
-    <mat-form-field class="kd-form-field" hintLabel="Password should be at least 8 characters">
-      <input 
-        type="password" 
-        matInput 
-        name="password" 
-        placeholder="Your password" 
-        ngModel
-        minlength="8"
-        required
-        #pwInput="ngModel"
+          By checking this box you agree to our T&Cs.
+      </mat-checkbox>
+      <button 
+        type="submit" 
+        class="kd-btn 
+        submit" 
+        mat-raised-button 
+        color="primary"
+        [disabled]="f.invalid"
       >
-      <mat-hint align="end">{{ pwInput.value?.length}} / 6</mat-hint>
-    <mat-error>At least 8 characters long</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input 
-        matInput 
-        ngModel
-        placeholder="Your birthdate" 
-        name="birthdate"
-        [matDatepicker]="picker"
-        [max]="maxDate"
-      >
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker ></mat-datepicker>
-    </mat-form-field>
-    <mat-checkbox 
-      ngModel 
-      name="agree" 
-      required 
-      color="primary"
-    >
-        By checking this box you agree to our T&Cs.
-    </mat-checkbox>
-    <button 
-      type="submit" 
-      class="kd-btn 
-      submit" 
-      mat-raised-button 
-      color="primary"
-      [disabled]="f.invalid"
-    >
-      Sign In
-    </button>
-  </form>
+        Sign In
+      </button>
+    </form>
+    <span class="kd-link">Have an account? <a [routerLink]="[ '/login' ]">Log in to continue.</a></span>
+  </div>
 </section>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Check } from './check.model';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-check',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./check.component.css']
 })
 export class CheckComponent implements OnInit {
-  @Input() check: Check;
+  @Input() check: any;
   createWhen: string;
 
   constructor(private router: Router) { }
@@ -23,10 +24,12 @@ export class CheckComponent implements OnInit {
   }
   getWhen() {
     var today = new Date(Date.now()).getDate();
-    var dif = today - this.check.create_at.getDate();
+    var checkCreated = new Date(this.check.create_at.seconds * 1000)
+    var dif = today - checkCreated.getDate();
+    // var dif = 1;
     switch (dif) {
       case 0:
-        this.createWhen = this.getFormatTime(this.check.create_at);
+        this.createWhen = this.getFormatTime(checkCreated);
         break;
       case 1:
         this.createWhen = 'Yesterday';
@@ -37,12 +40,11 @@ export class CheckComponent implements OnInit {
     }
   }
 
-  isCheckClose() {
-    return (this.check.saved && !this.check.adjusted_tip) ? false : true ;
+  isCheckClosed() {
+    return this.check.closed ? true : false ;
   }
 
   onClick(id: string) {
-    // [routerLink]="[ '/console/checks/viewcheck', check.id ]"
     this.router.navigate(['/console/checks/viewcheck', id])
   }
 }

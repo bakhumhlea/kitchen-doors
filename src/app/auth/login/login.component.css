@@ -10,11 +10,42 @@ mat-checkbox {
   font-size: 0.7em;
 }
 .kd-login-form {
-  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: calc(100vh - 50px);
   max-width: 100vw;
   margin: auto;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background-color: #15383a;
+}
+.kd-login-box {
+  width: 400px;
+}
+.kd-logo-wrap {
+  margin: 0 auto;
+  width: 100%;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.kd-logo {
+  width: 85px;
+  height: 85px;
+  font-size: 5.4em;
+  color: #00ffa6;
+  transform: rotate(-45deg) translate(0px, 0px);
+}
+.kd-appname {
+  font-family: 'DM sans', 'Montserrat', sans-serif;
+  font-size: 1.4em;
+  margin-top: 10px;
+  font-weight: 700;
+  color: #00ffa6;
 }
 .kd-form-field {
   width: 100%;
@@ -23,6 +54,7 @@ mat-checkbox {
   font-family: 'Poppins', 'Montserrat', sans-serif;
   font-weight: 500;
   padding-bottom: 10px;
+  text-align: center;
   /* border-bottom: 1px solid rgba(255,255,255,.7); */
 }
 .kd-btn {
@@ -47,4 +79,26 @@ mat-checkbox {
 .kd-btn.submit {
   width: 100%;
   margin: 20px 0;
+}
+.kd-link {
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-size: 0.8em;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  margin-top: 40px;
+}
+.kd-link a {
+  color: #0baf75;
+  text-decoration: none; 
+}
+@media only screen and (max-width: 400px) {
+  .kd-login-form {
+    position: relative;
+    margin: 0;
+    padding-top: 40px;
+  }
+  .kd-login-box {
+    width: 300px;
+  }
 }

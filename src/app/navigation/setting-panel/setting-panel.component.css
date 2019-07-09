@@ -1,29 +1,63 @@
+.kd-sidenav {
+  background-color: #212121;
+  height: 100%;
+}
 .kd-sidenav-content {
   font-family: 'Poppins', 'Montserrat', sans-serif;
   font-size: 0.9em;
   width: 300px;
   font-weight: 300;
+  background-color: #212121;
 }
 .kd-nav-header {
-  /* display: flex;
+  display: flex;
   align-items: center;
-  justify-content: space-between; */
+  justify-content: flex-end;
   padding: 0 15px 0 11px;
   height: 50px;
+  width: 100%;
   border-bottom: 1px solid #2c2c2c;
+  letter-spacing: 1px;
 }
-.kd-nav-header .kd-btn.logout {
+.kd-nav-header .kd-nav-title {
   font-family: 'Poppins', 'Montserrat', sans-serif;
   display: flex;
   align-items: center;
-  font-size: 0.9em;
+  font-size: 1em;
   padding: 0px 10px;
   font-weight: 400;
 }
-.kd-nav-header .kd-btn.logout .ic.logout {
+.kd-nav-header .kd-nav-title .ic.gear {
   /* font-size: 1.4em; */
-  margin-right: 4px;
+  margin-left: 8px;
 }
+.kd-nav-content {
+  height: calc(100vh - 50px);
+  width: 100%;
+  background-color: #212121;
+  position: relative;
+}
+.notice {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: 500;
+  color: #272727;
+}
+.notice .ic.build {
+  font-size: 3em;
+  width: 1.6em;
+  height: 1.6em;
+  margin-bottom: 10px;
+  padding: 14px;
+  border: 5px solid #272727;
+  border-radius: 100px;
+}
+/* no use */
 .kd-nav-header .user-name {
   display: flex;
   align-items: center;
@@ -63,26 +97,4 @@
   font-size: 1em;
   text-decoration: none;
   font-weight: 300;
-}
-.ic.building {
-  float: right;
-  font-size: 1.2em;
-  transform: translateY(5px);
-  color: #00ffa6;
-  opacity: 0.3;
-  animation: building 1s linear infinite;
-}
-@keyframes building {
-  0% {
-    transform: translateY(5px) rotate(0deg);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translateY(7px) rotate(-10deg);
-    opacity: 0.5;
-  }
-  100% {
-    transform: translateY(5px) rotate(0deg);
-    opacity: 0.3;
-  }
 }

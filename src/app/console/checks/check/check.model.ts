@@ -1,12 +1,15 @@
 import { Item } from './item.model';
 
 export interface Check {
-  id: string;
+  id?: string;
   title: string;
   items: Item[];
-  guest: number | 0;
+  guest: number;
   host: string;
   create_at: Date;
-  saved: boolean;
-  adjusted_tip: boolean;
+  closed: boolean;
+  adjusted_tips: boolean;
+  purchase_value: number;
+  tips?: number;
+  payment?: 'credit' | 'cash' | 'mobile';
 }

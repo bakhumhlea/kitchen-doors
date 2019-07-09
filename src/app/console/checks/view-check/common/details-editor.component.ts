@@ -13,7 +13,7 @@ import { MAT_DIALOG_DATA } from '@angular/material';
         <p style="font-family: 'Poppins';font-size: 0.8em;margin-bottom: 10px;">Table / Guest Name</p>
         <div style="display: flex;align-items: center;">
           <input 
-            style="font-family:'Poppins';width: 100%;height:40px;transform: translateX(0px);"
+            style="font-family:'Poppins';font-size: 1.4em;width: 100%;height:40px;transform: translateX(0px);"
             matInput 
             name="Guest"
             [(ngModel)]="passedData.title">
@@ -46,13 +46,13 @@ import { MAT_DIALOG_DATA } from '@angular/material';
         Save
       </button>
       <button 
-        mat-raised-button
-        color="primary"
+        mat-button
         class="kd-btn"
         [mat-dialog-close]="false"
-        style="width: 150px;margin: 0 10px;"
+        style="width: 150px;margin: 0 10px;    color: #b1b1b1;
+        border: 1px solid #232323;"
       >
-        Discard
+        Cancel
       </button>
     </div>
   `
