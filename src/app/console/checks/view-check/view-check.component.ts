@@ -18,7 +18,7 @@ import { HeaderService } from 'src/app/navigation/header/header.service';
   styleUrls: ['./view-check.component.css']
 })
 export class ViewCheckComponent implements OnInit, OnDestroy {
-  private check: Check;
+  check: Check;
   selectedCustomer: string;
   checkSubscription: Subscription;
   checksSubscription: Subscription;

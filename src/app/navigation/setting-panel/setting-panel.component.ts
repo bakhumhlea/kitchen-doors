@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthServices } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-setting-panel',
@@ -7,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authService: AuthServices
+  ) { }
 
+  isAuth() {
+    return this.authService.isAuth();
+  }
   ngOnInit() {
   }
 

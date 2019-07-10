@@ -1,14 +1,13 @@
-<table mat-table *ngIf="check" [dataSource]="check?.items" class="mat-elevation-z8" [ngClass]="{'kd-table': true}" fxHide>
-    <!-- Item Column -->
+<!-- <table mat-table *ngIf="check" [dataSource]="check?.items" class="mat-elevation-z8" [ngClass]="{'kd-table': true}" fxHide>
 <ng-container matColumnDef="delete">
   <th class="kd-item-center delete-btn" mat-header-cell *matHeaderCellDef><mat-icon class="trash-icon">delete_outline</mat-icon></th>
   <td class="kd-item-center delete-btn" mat-cell *matCellDef="let item; let i = index" (click)="deleteItem(i)"><mat-icon class="trash-icon">delete_outline</mat-icon></td>
-  <!-- <td class="kd-item-center" mat-footer-cell *matFooterCellDef> Total </td> -->
+  <td class="kd-item-center" mat-footer-cell *matFooterCellDef> Total </td>
 </ng-container>
 <ng-container matColumnDef="item">
   <th class="kd-item-center item-label" mat-header-cell *matHeaderCellDef> Items </th>
   <td class="kd-item-center item-label" mat-cell *matCellDef="let item"> {{item.label}} </td>
-  <!-- <td class="kd-item-center" mat-footer-cell *matFooterCellDef> Total </td> -->
+  <td class="kd-item-center" mat-footer-cell *matFooterCellDef> Total </td>
 </ng-container>
 <ng-container matColumnDef="qty">
   <th class="kd-item-center" mat-header-cell *matHeaderCellDef> Quantity </th>
@@ -37,9 +36,9 @@
   <td class="kd-item-center" mat-cell *matCellDef="let item"> {{getTotal(item) | currency}} </td>
 </ng-container>
 <tr class="kd-item-center" mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-<tr [ngClass]="showDeleteBtn===i?'kd-item-center slide':'kd-item-center'" mat-row *matRowDef="let row; columns: displayedColumns;let i = index" (click)="onClickItem(i)" [hidden]="!!item"></tr>
-<!-- <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr> -->
-</table>
+<tr [ngClass]="showDeleteBtn===i?'kd-item-center slide':'kd-item-center'" mat-row *matRowDef="let row; columns: displayedColumns;let i = index" (click)="onClickItem(i)"></tr>
+<tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+</table> -->
 <div class="kd-items-table">
   <div class="kd-item-row header">
     <span class="cell label">Items</span>

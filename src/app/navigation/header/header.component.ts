@@ -7,6 +7,7 @@ import { CheckService } from 'src/app/console/checks/check/check.service';
 import { SaveChangesModalComponent } from 'src/app/common/save-changes-modal.component';
 import { AnimationService } from './animation.service';
 import { HeaderService } from './header.service';
+import { User } from 'src/app/auth/user.model';
 
 @Component({
   selector: 'app-header',
@@ -16,8 +17,8 @@ import { HeaderService } from './header.service';
 export class HeaderComponent implements OnInit {
   @Output() sidenavToggle = new EventEmitter<void>();
   @Output() rightnavToggle = new EventEmitter<void>();
-  private user = {};
   private path: string;
+  user: User;
   isAuth = false;
   sidenavOpen = false;
   activeShortcutTab: string;

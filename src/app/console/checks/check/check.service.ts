@@ -21,7 +21,8 @@ export class CheckService {
       guest: 1,
       host: 'Tatuu',
       create_at: new Date(Date.now()),
-      saved: true,
+      closed: true,
+      purchase_value: 0,
       adjusted_tips: false,
     },
     {
@@ -36,7 +37,8 @@ export class CheckService {
       guest: 4,
       host: 'Stefan',
       create_at: new Date(Date.now()),
-      saved: true,
+      closed: true,
+      purchase_value: 0,
       adjusted_tips: true,
     }
   ];

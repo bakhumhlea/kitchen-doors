@@ -31,19 +31,17 @@ export class MenuItemsComponent implements OnInit {
     this.onSetMenuTabs(this.menus[this.activeMenuIndex]);
     this.onClickTabButton(this.categoryTabs[0]);
   }
+  onSwitchMenu() {
+    let l = this.menus.length;
+    this.activeMenuIndex = this.activeMenuIndex<l-1? this.activeMenuIndex+1:0;
+    this.onSetMenuTabs(this.menus[this.activeMenuIndex]);
+    this.onClickTabButton(this.categoryTabs[0]);
+  }
   onChangeMenu(index:number, menu: string) {
-    if (menu || index) {
-      this.activeMenuIndex = index;
-      this.onSetMenuTabs(menu);
-      this.onClickTabButton(this.categoryTabs[0]);
-      this.onToggleMenuSelection();
-    } else {
-      let l = this.menus.length;
-      this.activeMenuIndex = this.activeMenuIndex<l-1? this.activeMenuIndex+1:0;
-      this.onSetMenuTabs(this.menus[this.activeMenuIndex]);
-      this.onClickTabButton(this.categoryTabs[0]);
-    }
-
+    this.activeMenuIndex = index;
+    this.onSetMenuTabs(menu);
+    this.onClickTabButton(this.categoryTabs[0]);
+    this.onToggleMenuSelection();
   }
   onSetMenuTabs(menu:string) {
     this.categoryTabs = Object.keys(MENU_ITEMS[menu]);

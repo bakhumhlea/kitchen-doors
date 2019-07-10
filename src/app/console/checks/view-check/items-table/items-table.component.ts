@@ -13,8 +13,7 @@ export class ItemsTableComponent implements OnInit {
   @Input() check: Check;
   displayedColumns: string[] = ['delete','item', 'qty', 'price', 'subtotal', 'discount','total'];
   items = [];
-  private showDeleteBtn: number = null;
-  private checkSubscription: Subscription;
+  showDeleteBtn: number = null;
 
   constructor(
     private checkService: CheckService
@@ -46,12 +45,7 @@ export class ItemsTableComponent implements OnInit {
     this.checkService.removeItem(index);
   }
   ngOnInit() {
-    // console.log(this.checkId);
-    // this.checkService.getCheck(this.checkId);
-    // this.checkSubscription = this.checkService.checkUpdate.subscribe(value => {
-    //   console.log(value)
-    //   this.checkRef = value;
-    // });
+    
   }
 
 }

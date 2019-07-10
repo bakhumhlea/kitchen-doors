@@ -9,10 +9,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 
-import { DashboardComponent } from './dashboard.component';
-import { DashboardService } from './dashboard.service';
-import { ProductComponent } from './product/product.component';
-import { HomeComponent } from './home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -37,9 +33,6 @@ import { HeaderService } from './navigation/header/header.service';
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    ProductComponent,
-    HomeComponent,
     SignupComponent,
     LoginComponent,
     SidenavComponent,
@@ -61,12 +54,11 @@ import { HeaderService } from './navigation/header/header.service';
     AppRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
   providers: [
-    DashboardService,
     ViewCheckService,
     AuthServices,
     CheckService,

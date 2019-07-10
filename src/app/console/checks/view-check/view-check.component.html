@@ -23,7 +23,6 @@
           <span class="el r" (click)="discardCheck()">
             <span>{{check.closed?'Done':'Discard'}}</span>
             <mat-icon class="ic" *ngIf="!check.closed">delete_outline</mat-icon>
-            <mat-icon class="ic" *ngIf="check.closed">done</mat-icon>
           </span>
         </div>
         <div class="summary">

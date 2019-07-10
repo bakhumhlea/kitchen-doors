@@ -1,4 +1,4 @@
-import { Component, Inject, Output } from '@angular/core';
+import { Component, Inject, Output, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material'
 
 @Component({
@@ -27,9 +27,9 @@ import { MAT_DIALOG_DATA } from '@angular/material'
   `
 })
 
-export class CustomerLookupComponent {
-    private customers: any;
-    @Output() selectedCustomer: any;
+export class CustomerLookupComponent implements OnInit {
+    customers: any;
+    selectedCustomer: any;
 
     constructor(@Inject(MAT_DIALOG_DATA) private passedData: any) {}
     ngOnInit(): void {

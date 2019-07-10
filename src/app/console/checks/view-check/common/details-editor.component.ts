@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 @Component({
   selector: 'app-details-editor',
@@ -16,8 +16,8 @@ import { MAT_DIALOG_DATA } from '@angular/material';
             style="font-family:'Poppins';font-size: 1.4em;width: 100%;height:40px;transform: translateX(0px);"
             matInput 
             name="Guest"
-            [(ngModel)]="passedData.title">
-          <button mat-button matSuffix *ngIf="passedData.title" mat-icon-button aria-label="Clear" (click)="passedData.title=''" style="transform: translateY(0);position:absolute;right: 0;">
+            [(ngModel)]="title">
+          <button mat-button matSuffix *ngIf="title" mat-icon-button aria-label="Clear" (click)="title=''" style="transform: translateY(0);position:absolute;right: 0;">
             <mat-icon>close</mat-icon>
           </button>
         </div>
@@ -25,11 +25,11 @@ import { MAT_DIALOG_DATA } from '@angular/material';
       <mat-form-field style="width: 60%;margin:auto;display: block;margin: 0 auto;text-align: center;" color="primary">
         <p style="font-family: 'Poppins';font-size: 0.8em;margin-bottom: 10px;">Guest Number</p>
         <div style="display: flex;align-items: center;">
-          <button mat-button matPrefix mat-icon-button aria-label="Clear" (click)="passedData.guest=decrement(passedData.guest)" style="transform: translateY(0);">
+          <button mat-button matPrefix mat-icon-button aria-label="Clear" (click)="guest=decrement(guest)" style="transform: translateY(0);">
             <mat-icon>remove</mat-icon>
           </button>
-          <input class="kd-input-number" style="font-family:'Poppins';font-size: 1.4em;transform: translateX(0);" matInput type="number" min="0" max="50" [(ngModel)]="passedData.guest">
-          <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="passedData.guest=passedData.guest+1" style="transform: translateY(0);">
+          <input class="kd-input-number" style="font-family:'Poppins';font-size: 1.4em;transform: translateX(0);" matInput type="number" min="0" max="50" [(ngModel)]="guest">
+          <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="guest=guest+1" style="transform: translateY(0);">
           <mat-icon>add</mat-icon>
         </button>
         </div>
@@ -40,7 +40,7 @@ import { MAT_DIALOG_DATA } from '@angular/material';
         mat-raised-button
         color="warn"
         class="kd-btn"
-        [mat-dialog-close]="passedData"
+        [mat-dialog-close]="{guest: guest, title: title}"
         style="width: 150px;margin: 0 10px;"
       >
         Save
@@ -57,11 +57,11 @@ import { MAT_DIALOG_DATA } from '@angular/material';
     </div>
   `
 })
-export class DetailsEditorComponent {
+export class DetailsEditorComponent implements OnInit {
   guest: number;
   title: string;
 
-  constructor(
+  constructor (
     @Inject(MAT_DIALOG_DATA) private passedData: any
   ) {}
 

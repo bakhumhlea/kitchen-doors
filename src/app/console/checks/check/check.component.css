@@ -21,7 +21,7 @@
 }
 
 .checks-content {
-  height: 100%;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -61,7 +61,7 @@
   display: flex;
   align-items: center;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 400px) {
   .check-mod {
     width: 100%;
     height: 100px;
@@ -69,6 +69,9 @@
   }
   .check-mod:hover {
     transform: translateY(0px);
+  }
+  .checks-content {
+    height: 100px;
   }
   .text-mid {
     text-align: center;
