@@ -1,4 +1,6 @@
 # [Kitchen Doors](http://kitchendoors.netlify.com/)
+[![kitchen-door](https://img.shields.io/badge/Kitchen%20Doors-v1.0.0-blue.svg)](http://kitchendoors.netlify.com/) ![](https://img.shields.io/badge/license-MIT-blue.svg)
+
 Check out the prototype: http://kitchendoors.netlify.com
 
 ## Brief
@@ -31,5 +33,5 @@ Deployed on **[Netlify](https://www.netlify.com/)**
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Version
-v0.01
+v1.0.0
 
